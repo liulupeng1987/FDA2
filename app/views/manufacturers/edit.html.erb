@@ -1,0 +1,38 @@
+<div class="col-md-4 col-md-offset-4">
+    <h2>Edit manufacturer info</h2>
+
+    <hr>
+    <%= form_for @manufacturer do |f| %>
+
+    Name
+    <%= f.text_field :name %>
+    <br>
+    Address
+    <%= f.text_field :address %>
+    <br>
+    Description
+    <br>
+    <%= f.text_area :description %>
+    <br>
+    Contact Person
+    <br>
+    <%= f.text_field :contact_person %>
+    <br>
+    Phone
+    <br>
+    <%= f.text_field :phone %>
+    <br>
+    Email
+    <br>
+    <%= f.text_field :email %>
+    <br>
+    Website
+    <br>
+    <%= f.text_field :website %>
+    <br>
+
+
+    <%= f.submit "Submit", :disable_with => 'Submiting...' %>
+    <% end %>
+
+</div>
