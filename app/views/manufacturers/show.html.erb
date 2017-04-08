@@ -1,0 +1,43 @@
+<div class="col-md-12">
+  <div class="group">
+    <%= link_to("Edit", edit_manufacturer_path(@manufacturer), class: "btn btn-primary pull-right")%>
+  </div>
+  <h2><%= @manufacturer.name %></h2>
+  <p><%= @manufacturer.description %></p>
+  <div>
+    <h3>Contact Information</h3>
+    <table class= "table table-hover">
+      <thead>
+        <tr>
+          <td>Items</td>
+          <td>Information</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Address</th>
+          <td><%= @manufacturer.address %></td>
+        </tr>
+        <tr>
+          <th>Contact_person</th>
+          <td><%= @manufacturer.contact_person %></td>
+        </tr>
+        <tr>
+          <th>Phone</th>
+          <td><%= @manufacturer.phone %></td>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <td><%= @manufacturer.email %></td>
+        </tr>
+        <tr>
+          <th>Website</th>
+          <td><a href=<%= @manufacturer.website %>><%= @manufacturer.website %></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <p><%= link_to("back to manufacturer list", manufacturers_path) %> </p>
+  </div>
+</div>
