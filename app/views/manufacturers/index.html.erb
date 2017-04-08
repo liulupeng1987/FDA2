@@ -1,0 +1,34 @@
+<div class="col-md-12">
+  <div class="group">
+    <%= link_to("New manufacturer", new_manufacturer_path, class: "btn btn-primary pull-right") %>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>Name</td>
+        <td>Contact Person</td>
+        <td>Phone</td>
+        <td>Email</td>
+        <td>Website</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @manufacturers.each do |manufacturer| %>
+        <tr>
+          <td>#</td>
+          <td><%= link_to(manufacturer.name, manufacturer_path(manufacturer)) %></td>
+          <td><%= manufacturer.contact_person %></td>
+          <td><%= manufacturer.phone %></td>
+          <td><%= manufacturer.email %></td>
+          <td><%= manufacturer.website %></td>
+          <td>
+              <%= link_to("Edit", edit_manufacturer_path(manufacturer), class: "btn btn-sm btn-default")%>
+              <%= link_to("Delete", manufacturer_path(manufacturer),    class: "btn btn-sm btn-default",
+                          method: :delete, data: { confirm: "Are you sure?" } )%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
