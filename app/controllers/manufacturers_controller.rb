@@ -1,5 +1,5 @@
 class ManufacturersController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy, :search, :love, :unlove]
   before_action :require_is_admin, only: [:new, :create, :update, :edit, :destroy]
   before_action :validate_search_key, only: [:search]
   def show
@@ -42,6 +42,43 @@ class ManufacturersController < ApplicationController
     @manufacturer.destroy
     redirect_to manufacturers_path
   end
+
+  def love
+    @manufacturer = Manufacturer.find(params[:id])
+
+      if !current_user.is_favorite_of?(@manufacturer)
+        current_user.love!(@manufacturer)
+        flash[:notice] = "Success adding to favorite!"
+      else
+        flash[:warning] = "Already is your favorite manufacturer!"
+      end
+
+      redirect_to manufacturer_path(@manufacturer)
+  end
+
+  def unlove
+    @manufacturer = Manufacturer.find(params[:id])
+      if current_user.is_favorite_of?(@manufacturer)
+        current_user.unlove!(@manufacturer)
+        flash[:notice] = "Success deleting from favorites!"
+      else
+        flash[:warning] = "The manufacturer isn't your favorite, how to remove from your favorite!"
+      end
+      redirect_to manufacturer_path(@manufacturer)
+  end
+
+  # def favorite
+  #   type = params[:type]
+  #   if type == "favorite"
+  #     current_user.favorite_manufacturer << @manufacturer
+  #     redirect_to :back
+  #   elsif type == "unfavorite"
+  #     current_user.favorite_manufacturer.delete(@manufacturer)
+  #
+  #   else
+  #     redirect_to :back
+  #   end
+  # end
 
   def search
     if @query_string.present?

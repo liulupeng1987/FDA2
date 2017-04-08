@@ -1,4 +1,14 @@
 <div class="col-md-12">
+  <span class="pull-right">
+    <% if current_user && current_user.is_favorite_of?(@manufacturer) %>
+      <label class="label label-success"> favorite </label>
+      <%= link_to("Remove from favorite", unlove_manufacturer_path(@manufacturer), method: :post, class: "btn btn-default") %>
+    <% else %>
+      <label class="label label-warning"> unfavorite </label>
+      <%= link_to("Add to favorite", love_manufacturer_path(@manufacturer), method: :post, class: "btn btn-default") %>
+    <% end %>
+  </span>
+
   <div class="group">
     <%= link_to("Edit", edit_manufacturer_path(@manufacturer), class: "btn btn-primary pull-right")%>
   </div>
@@ -33,6 +43,10 @@
         <tr>
           <th>Website</th>
           <td><a href=<%= @manufacturer.website %>><%= @manufacturer.website %></a></td>
+        </tr>
+        <tr>
+          <th>Fans Number </th>
+          <td> <%= @manufacturer.fans.count %></td>
         </tr>
       </tbody>
     </table>

@@ -1,0 +1,35 @@
+<div class="col-md-12">
+
+  <h2 class="text-center"> My favorite manufacturers </h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th> # </th>
+        <th> Name </th>
+        <th> Description </th>
+        <th> Contact Person </th>
+        <th> Phone </th>
+        <th> Email </th>
+        <th> Website </th>
+        <th> Fans number </th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @manufacturers.each do |manufacturer| %>
+        <tr>
+          <td> # </td>
+          <td> <%= link_to(manufacturer.name, manufacturer_path(manufacturer)) %> </td>
+          <td> <%= manufacturer.description %> </td>
+          <td> <%= manufacturer.contact_person %> </td>
+          <td> <%= manufacturer.phone %> </td>
+          <td> <%= manufacturer.email %> </td>
+          <td><a href=<%= manufacturer.website %>><%= manufacturer.website %></a></td>
+          <td> <%= manufacturer.fans.count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

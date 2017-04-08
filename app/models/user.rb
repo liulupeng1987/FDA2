@@ -6,4 +6,16 @@ class User < ApplicationRecord
   def admin?
     is_admin
   end
+  has_many :favorites
+  has_many :favorite_manufacturers, :through => :favorites, :source => :manufacturer
+  def is_favorite_of?(manufacturer)
+    favorite_manufacturers.include?(manufacturer)
+  end
+
+  def love!(manufacturer)
+    favorite_manufacturers << manufacturer
+  end
+  def unlove!(manufacturer)
+    favorite_manufacturers.delete(manufacturer)
+  end
 end
