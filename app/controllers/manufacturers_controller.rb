@@ -1,5 +1,5 @@
 class ManufacturersController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy, :search]
+  before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
   before_action :require_is_admin, only: [:new, :create, :update, :edit, :destroy]
   before_action :validate_search_key, only: [:search]
   def show
@@ -45,10 +45,12 @@ class ManufacturersController < ApplicationController
 
   def search
     if @query_string.present?
-      search_result = Manufacturer.ransack(@search_criteria).result(:distinct => true)
-      @manufacturers = search_result.paginate(:page => params[:page], :per_page => 5)
+      @search_result = Manufacturer.ransack(@search_criteria).result(:distinct => true)
+      @manufacturers = @search_result
+#      @manufacturers = @search_result.paginate(:page => params[:page], :per_page => 5 )
     end
   end
+
 
   protected
 
@@ -61,6 +63,33 @@ class ManufacturersController < ApplicationController
   def search_criteria(query_string)
     { :name => query_string }
   end
+
+  # def search
+  #   if @query_string.present?
+  #     @q = Manufacturer.ransack(@search_criteria)
+  #     @manufacturers = @q.result(:distinct => true).paginate(:page => params[:page], :per_page => 5)
+  #   end
+  # end
+  #
+  # protected
+  #
+  # def validate_search_key
+  #   @query_string = params[:q].gsub(/\\|\'|-|\/|\.|\?/, "") if params[:q].present?
+  #   @search_criteria = {
+  #     :name => @query_string
+  #   }
+  #
+  # end
+
+  # def validate_search_key
+  #   @query_string = params[:q].gsub(/\\|\'|\/|\?/, "") if params[:q].present?
+  #   @search_criteria = search_criteria(@query_string)
+  # end
+  #
+  #
+  # def search_criteria(query_string)
+  #   { :name => query_string }
+  # end
 
   private
 

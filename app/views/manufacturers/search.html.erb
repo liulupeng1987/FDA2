@@ -1,6 +1,6 @@
 <div>
   <br>
-<% if @query_string.blank? %>
+  <% if @query_string.blank? %>
     <div class="search-info-title">
       Sorry, The search content cannot be blank, please type some words to search.
     </div>
@@ -9,12 +9,51 @@
     <br>
     <h2 class="search-info-title">no results</h2>
   <% else %>
-    <h2 class="search-info-title"> 有关"<%= @query_string %>"的工作信息 </h2>
+    <h2 class="search-info-title"> 有关"<%= @query_string %>"的信息 </h2>
+    <table class="table table-boldered">
+      <thead>
+        <tr>
+          <td>name</td>
+          <td>phone</td>
+          <td>email</td>
+          <td>website</td>
+        </tr>
+      </thead>
+      <tbody>
+      <% @search_result.each do |manufacturer| %>
+      <tr>
+        <td>
+          <%= link_to(manufacturer.name, manufacturer_path(manufacturer)) %>
+        </td>
+        <td>
+          <%= manufacturer.phone %>
+        </td>
+        <td>
+          <%= manufacturer.email %>
+        </td>
+
+        <td>
+          <%= manufacturer.website %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+    </table>
+
+
+
+<!--
+
     <div class="search-result">
 
       <div class="row jobs-show0"></div>
       <div class="job-table">
-        <% @manufacturers.each do |manufacturer| %>
+        <% @search_result.each do |manufacturer| %>
+
+
+
+
+
         <div class="row jobs-show">
 
           <div class="col-md-12 col-lg-9 col-lg-offset-1">
@@ -28,9 +67,8 @@
         </div>
         <% end %>
       </div>
-    </div>
-    <div class="text-center">
-      <%= will_paginate(@manufacturers, renderer: BootstrapPagination::Rails) %>
-    </div>
+    </div> -->
+
+
   <% end %>
 </div>
