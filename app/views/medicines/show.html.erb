@@ -1,0 +1,43 @@
+<div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>Items</td>
+        <td>Info</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Product Name</td>
+        <td><%= @medicine.name %></td>
+      </tr>
+      <tr>
+        <td>Strength</td>
+        <td><%= @medicine.strength %></td>
+      </tr>
+      <tr>
+        <td>Dosage form</td>
+        <td><%= @medicine.dosage_form %></td>
+      </tr>
+      <tr>
+        <td>Approval number</td>
+        <td><%= @medicine.approval_number %></td>
+      </tr>
+      <tr>
+        <td>Approval date</td>
+        <td><%= @medicine.approval_date %></td>
+      </tr>
+      <tr>
+        <td>Category</td>
+        <td><%= @medicine.category %></td>
+      </tr>
+      <tr>
+        <td>Manufacturer</td>
+        <td><a href=<%= @medicine.manufacturer.website %>><%= @medicine.manufacturer.name %></a></td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <p><%= link_to("back", medicines_path) %> </p>
+  </div>
+</div>

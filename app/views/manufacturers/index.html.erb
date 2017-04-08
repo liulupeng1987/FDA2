@@ -29,14 +29,16 @@
       </tr>
     </thead>
     <tbody>
+      <% i = 1 %>
       <% @manufacturers.each do |manufacturer| %>
+      <% j = @manufacturers.current_page %>
         <tr>
-          <td>#</td>
+          <td><%= i + (j-1) * 5 %></td>
           <td><%= link_to(manufacturer.name, manufacturer_path(manufacturer)) %></td>
           <td><%= manufacturer.contact_person %></td>
           <td><%= manufacturer.phone %></td>
           <td><%= manufacturer.email %></td>
-          <td><%= manufacturer.website %></td>
+          <td><a href=<%= manufacturer.website %>><%= manufacturer.website %></a></td>
           <td>
               <% if current_user && current_user.is_admin == true %>
               <%= link_to("Edit", edit_manufacturer_path(manufacturer), class: "btn btn-sm btn-default")%>
@@ -45,7 +47,11 @@
               <% end %>
           </td>
         </tr>
+        <% i += 1 %>
       <% end %>
     </tbody>
   </table>
+  <div class="text-center">
+    <%= will_paginate @medicines %>
+  </div>
 </div>

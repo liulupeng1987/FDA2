@@ -13,6 +13,7 @@
     <table class="table table-boldered">
       <thead>
         <tr>
+          <td>#</td>
           <td>name</td>
           <td>phone</td>
           <td>email</td>
@@ -20,55 +21,28 @@
         </tr>
       </thead>
       <tbody>
-      <% @search_result.each do |manufacturer| %>
-      <tr>
-        <td>
-          <%= link_to(manufacturer.name, manufacturer_path(manufacturer)) %>
-        </td>
-        <td>
-          <%= manufacturer.phone %>
-        </td>
-        <td>
-          <%= manufacturer.email %>
-        </td>
+        <% i = 1 %>
+        <% @search_result.each do |manufacturer| %>
+        <% j = @manufacturers.current_page %>
+          <tr>
+            <td><%= i + (j-1) * 5 %></td>
+            <td>
+              <%= link_to(manufacturer.name, manufacturer_path(manufacturer)) %>
+            </td>
+            <td>
+              <%= manufacturer.phone %>
+            </td>
+            <td>
+              <%= manufacturer.email %>
+            </td>
 
-        <td>
-          <%= manufacturer.website %>
-        </td>
-      </tr>
-      <% end %>
+            <td>
+              <%= manufacturer.website %>
+            </td>
+          </tr>
+          <% i += 1 %>
+        <% end %>
     </tbody>
     </table>
-
-
-
-<!--
-
-    <div class="search-result">
-
-      <div class="row jobs-show0"></div>
-      <div class="job-table">
-        <% @search_result.each do |manufacturer| %>
-
-
-
-
-
-        <div class="row jobs-show">
-
-          <div class="col-md-12 col-lg-9 col-lg-offset-1">
-
-            <div class="pull-right">
-              发布时间：<%= manufacturer.created_at.to_date %>
-            </div>
-            <p ><%= link_to(manufacturer.name, manufacturer_path(manufacturer)) %></p>
-
-          </div>
-        </div>
-        <% end %>
-      </div>
-    </div> -->
-
-
   <% end %>
 </div>

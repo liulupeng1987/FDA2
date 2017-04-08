@@ -1,0 +1,48 @@
+<div>
+  <br>
+  <% if @query_string.blank? %>
+    <div class="search-info-title">
+      Sorry, The search content cannot be blank, please type some words to search.
+    </div>
+
+  <% elsif @medicines.blank? %>
+    <br>
+    <h2 class="search-info-title">no results</h2>
+  <% else %>
+    <h2 class="search-info-title"> 有关"<%= @query_string %>"的信息 </h2>
+    <table class="table table-boldered">
+      <thead>
+        <tr>
+          <td>#</td>
+          <td>name</td>
+          <td>strength</td>
+          <td>dosage_form</td>
+          <td>manufacturer</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% i = 1 %>
+      <% @search_result.each do |medicine| %>
+      <% j = @medicines.current_page %>
+      <tr>
+        <td><%= i + (j-1) * 5 %></td>
+        <td>
+          <%= link_to(medicine.name, medicine_path(medicine)) %>
+        </td>
+        <td>
+          <%= medicine.strength %>
+        </td>
+        <td>
+          <%= medicine.dosage_form %>
+        </td>
+
+        <td>
+          <%= medicine.factoryname %>
+        </td>
+      </tr>
+      <% i += 1 %>
+      <% end %>
+    </tbody>
+    </table>
+  <% end %>
+</div>

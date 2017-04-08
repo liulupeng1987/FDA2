@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  strength: MyString
+  dosage_form: MyString
+  approval_number: MyString
+  approval_date: 2017-04-08
+  category: MyString
+  manufacturer: MyString
+  manufacturer_id: 1
+  price: 1.5
+
+two:
+  name: MyString
+  strength: MyString
+  dosage_form: MyString
+  approval_number: MyString
+  approval_date: 2017-04-08
+  category: MyString
+  manufacturer: MyString
+  manufacturer_id: 1
+  price: 1.5

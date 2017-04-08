@@ -1,0 +1,20 @@
+<div class="col-md-4">
+    <h2>Add a new medicine</h2>
+
+    <hr>
+    <%= simple_form_for @medicine do |f| %>
+
+    <%= f.input :name %>
+    <%= f.input :strength %>
+    <%= f.input :dosage_form %>
+    <%= f.input :approval_number %>
+    <%= f.input :approval_date %>
+    <%= f.input :category %>
+    <%= f.input :manufacturer %>
+    <%= select_tag(:manufacturer_id, options_for_select(@manufacturers), :prompt => "Manufacturer") %>
+    <%= f.input :price, :label => "price" %>
+
+      <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
+    <% end %>
+
+</div>
