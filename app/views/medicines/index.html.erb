@@ -38,6 +38,7 @@
         <% j = @medicines.current_page %>
         <tr>
           <td><%= i + (j-1) * 5 %></td>
+
           <td><%= link_to(medicine.name, medicine_path(medicine)) %></td>
           <td><%= medicine.strength %></td>
           <td><%= medicine.dosage_form %></td>

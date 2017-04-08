@@ -41,6 +41,7 @@ gem 'devise'
 gem 'ransack'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
+require 'will_paginate/collection'
 gem 'seo_helper'
 
 

@@ -31,7 +31,7 @@
     <tbody>
       <% i = 1 %>
       <% @manufacturers.each do |manufacturer| %>
-      <% j = @manufacturers.current_page %>
+        <% j = @manufacturers.current_page %>
         <tr>
           <td><%= i + (j-1) * 5 %></td>
           <td><%= link_to(manufacturer.name, manufacturer_path(manufacturer)) %></td>
@@ -52,6 +52,6 @@
     </tbody>
   </table>
   <div class="text-center">
-    <%= will_paginate @medicines %>
+    <%= will_paginate @manufacturers %>
   </div>
 </div>

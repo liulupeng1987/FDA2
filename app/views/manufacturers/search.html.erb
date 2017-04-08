@@ -22,7 +22,7 @@
       </thead>
       <tbody>
         <% i = 1 %>
-        <% @search_result.each do |manufacturer| %>
+        <% @manufacturers.each do |manufacturer| %>
         <% j = @manufacturers.current_page %>
           <tr>
             <td><%= i + (j-1) * 5 %></td>
@@ -37,7 +37,7 @@
             </td>
 
             <td>
-              <%= manufacturer.website %>
+              <a href=<%= manufacturer.website %>><%= manufacturer.website %></a>
             </td>
           </tr>
           <% i += 1 %>

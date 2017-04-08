@@ -12,7 +12,7 @@ class MedicinesController < ApplicationController
       @medicines = Medicine.all.paginate(:page => params[:page], :per_page => 5)
     else
       @manufacturer_id = Manufacturer.find_by(name: params[:manufacturer]).id
-      @medicines = Medicine.where(:manufacturer_id => @manufacturer_id)
+      @medicines = Medicine.where(:manufacturer_id => @manufacturer_id).paginate(:page => params[:page], :per_page => 5)
     end
   end
 
@@ -55,7 +55,7 @@ class MedicinesController < ApplicationController
   def search
     if @query_string.present?
       @search_result = Medicine.ransack(@search_criteria).result(:distinct => true)
-      @medicines = @search_result.paginate(:page => params[:page], :per_page => 5 )
+      @medicines = @search_result.order(price: :desc).paginate(:page => params[:page], :per_page => 5 )
     end
   end
 
