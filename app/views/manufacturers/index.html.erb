@@ -1,6 +1,8 @@
 <div class="col-md-12">
-  <div class="group">
-    <%= link_to("New manufacturer", new_manufacturer_path, class: "btn btn-primary pull-right") %>
+  <div class="group
+    <% if current_user && current_user.is_admin == true %>
+      <%= link_to("New manufacturer", new_manufacturer_path, class: "btn btn-primary pull-right") %>
+    <% end %>
   </div>
   <table class="table table-hover">
     <thead>
@@ -23,9 +25,11 @@
           <td><%= manufacturer.email %></td>
           <td><%= manufacturer.website %></td>
           <td>
+              <% if current_user && current_user.is_admin == true %>
               <%= link_to("Edit", edit_manufacturer_path(manufacturer), class: "btn btn-sm btn-default")%>
               <%= link_to("Delete", manufacturer_path(manufacturer),    class: "btn btn-sm btn-default",
                           method: :delete, data: { confirm: "Are you sure?" } )%>
+              <% end %>
           </td>
         </tr>
       <% end %>

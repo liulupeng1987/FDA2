@@ -1,5 +1,6 @@
 class ManufacturersController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy, :search]
+  before_action :require_is_admin, only: [:new, :create, :update, :edit, :destroy]
   def show
     @manufacturer = Manufacturer.find(params[:id])
   end
