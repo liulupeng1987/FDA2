@@ -42,6 +42,8 @@ gem 'ransack'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'seo_helper'
+gem 'impressionist'
+gem 'font-awesome-rails'
 
 
 group :development, :test do

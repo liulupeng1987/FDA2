@@ -1,9 +1,11 @@
 <div class="col-md-12">
   <span class="pull-right">
     <% if current_user && current_user.is_favorite_of?(@manufacturer) %>
+      <i class="fa fa-star" aria-hidden="true"></i>
       <label class="label label-success"> favorite </label>
       <%= link_to("Remove from favorite", unlove_manufacturer_path(@manufacturer), method: :post, class: "btn btn-default") %>
     <% else %>
+      <i class="fa fa-star-o" aria-hidden="true"></i>
       <label class="label label-warning"> unfavorite </label>
       <%= link_to("Add to favorite", love_manufacturer_path(@manufacturer), method: :post, class: "btn btn-default") %>
     <% end %>
@@ -13,6 +15,8 @@
     <%= link_to("Edit", edit_manufacturer_path(@manufacturer), class: "btn btn-primary pull-right")%>
   </div>
   <h2><%= @manufacturer.name %></h2>
+  <p><i class="fa fa-eye" aria-hidden="true"></i><%= "#{@manufacturer.impressionist_count(:filter=>:session_hash)}" %>
+  </p>
   <p><%= simple_format(@manufacturer.description) %></p>
   <div>
     <h3>Contact Information</h3>

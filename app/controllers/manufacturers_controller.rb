@@ -2,8 +2,10 @@ class ManufacturersController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy, :search, :love, :unlove]
   before_action :require_is_admin, only: [:new, :create, :update, :edit, :destroy]
   before_action :validate_search_key, only: [:search]
+  impressionist :actions=>[:show]
   def show
     @manufacturer = Manufacturer.find(params[:id])
+    impressionist(@manufacturer)
   end
 
   def index
