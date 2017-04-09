@@ -54,6 +54,11 @@ class MedicinesController < ApplicationController
 
   def search
     if @query_string.present?
+      usearch = Usearch.new
+      usearch.uquery = @query_string
+      usearch.user_id = current_user.id
+      usearch.user_email = current_user.email
+      usearch.save
       @search_result = Medicine.ransack(@search_criteria).result(:distinct => true)
       @medicines = @search_result.order(price: :desc).paginate(:page => params[:page], :per_page => 5 )
     end

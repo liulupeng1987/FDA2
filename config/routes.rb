@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   namespace :account do
     resources :manufacturers
   end
+
+  resources :usearches
 end

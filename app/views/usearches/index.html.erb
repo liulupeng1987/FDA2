@@ -1,0 +1,23 @@
+<div class="col-md-12">
+
+  <h2 class="text-center"> User search medicines list </h2>
+
+  <table class="table">
+      <thead>
+        <tr>
+          <td>Usear email</td>
+          <td>Query medicine</td>
+          <td>Search Time</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @usearches.each do |usearch| %>
+        <tr>
+          <td><%= usearch.user_email %></td>
+          <td><%= usearch.uquery %></td>
+          <td><%= usearch.created_at.to_date %></td>
+        </tr>
+        <% end %>
+      </tbody>
+  </table>
+</div>

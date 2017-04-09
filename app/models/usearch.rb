@@ -1,0 +1,2 @@
+class Usearch < ApplicationRecord
+end
