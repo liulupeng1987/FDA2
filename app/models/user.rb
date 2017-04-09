@@ -18,4 +18,19 @@ class User < ApplicationRecord
   def unlove!(manufacturer)
     favorite_manufacturers.delete(manufacturer)
   end
+
+  has_many :collections
+  has_many :following_medicines, :through => :collections, :source => :medicine
+
+  def is_follower_of?(medicine)
+    following_medicines.include?(medicine)
+  end
+
+  def add!(medicine)
+    following_medicines << medicine
+  end
+  def remove!(medicine)
+    following_medicines.delete(medicine)
+  end
+  
 end

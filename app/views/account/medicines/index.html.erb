@@ -1,0 +1,32 @@
+<div class="col-md-12">
+
+  <h2 class="text-center"> My favorite medicine </h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th> # </th>
+        <th> Name </th>
+        <th> Strength </th>
+        <th> Dosage form </th>
+        <th> Manufacturer </th>
+        <th> Collection count </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% i = 1 %>
+      <% @medicines.each do |medicine| %>
+        <tr>
+          <td> <%= i %> </td>
+          <td> <%= link_to(medicine.name, medicine_path(medicine)) %> </td>
+          <td> <%= medicine.strength %> </td>
+          <td> <%= medicine.dosage_form %> </td>
+          <td><a href= <%= medicine.manufacturer.website %>><%= medicine.factoryname %></a></td>
+          <td><%= medicine.followers.count%></td>
+        </tr>
+        <% i += 1 %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

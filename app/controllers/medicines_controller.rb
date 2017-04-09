@@ -1,5 +1,5 @@
 class MedicinesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy, :search]
+  before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy, :search, :add, :remove]
   before_action :require_is_admin, only: [:new, :create, :update, :edit, :destroy]
   before_action :validate_search_key, only: [:search]
 
@@ -45,6 +45,30 @@ class MedicinesController < ApplicationController
       render :edit
     end
   end
+  def add
+    @medicine = Medicine.find(params[:id])
+
+      if !current_user.is_follower_of?(@medicine)
+        current_user.add!(@medicine)
+        flash[:notice] = "succeed adding to collections!"
+      else
+        flash[:warning] = "Already in your collections!"
+      end
+      redirect_to medicine_path(@medicine)
+  end
+
+  def remove
+    @medicine = Medicine.find(params[:id])
+    if current_user.is_follower_of?(@medicine)
+      current_user.remove!(@medicine)
+      flash[:alert] = "remove from your collections!"
+    else
+      flash[:warning] = "Not in your collections, how to remove from?"
+    end
+    redirect_to medicine_path(@medicine)
+  end
+
+
 
   def destroy
     @medicine = Medicine.find(params[:id])

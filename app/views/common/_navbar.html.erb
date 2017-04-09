@@ -23,6 +23,8 @@
                   <ul class="dropdown-menu">
                     <li> <%= link_to("My favorite_manufacturers", account_manufacturers_path) %></li>
                     <li class="divider"> </li>
+                    <li> <%= link_to("My medicine collections", account_medicines_path) %></li>
+                    <li class="divider"> </li>
                     <% if current_user.admin? %>
                       <li> <%= link_to("Search medicine list", usearches_path) %> </li>
                     <% end %>

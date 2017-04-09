@@ -18,9 +18,10 @@
     </thead>
 
     <tbody>
+      <% i = 1 %>
       <% @manufacturers.each do |manufacturer| %>
         <tr>
-          <td> # </td>
+          <td> <%= i %> </td>
           <td> <%= link_to(manufacturer.name, manufacturer_path(manufacturer)) %> </td>
           <td> <%= manufacturer.description %> </td>
           <td> <%= manufacturer.contact_person %> </td>
@@ -29,6 +30,7 @@
           <td><a href=<%= manufacturer.website %>><%= manufacturer.website %></a></td>
           <td> <%= manufacturer.fans.count %></td>
         </tr>
+        <% i += 1 %>
       <% end %>
     </tbody>
   </table>
