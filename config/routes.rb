@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'medicines#index'
+  root 'welcome#index'
+  get '/home', to: 'welcome#home'
   resources :medicines do
     member do
       post :add
@@ -28,4 +29,5 @@ Rails.application.routes.draw do
   end
 
   resources :usearches
+
 end
