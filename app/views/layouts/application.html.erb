@@ -3,30 +3,16 @@
   <head>
     <title>China Pharmabook</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-
-                <!-- Bootstrap core JavaScript
-                ================================================== -->
-                <!-- Placed at the end of the document so the pages load faster -->
-
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-                <script>window.jQuery || document.write('<script src="../../assets/javascripts/jquery.min.js"><\/script>')</script>
-                <script src="../../assets/javascripts/bootstrap.min.js"></script>
-                <script src="../../assets/javascripts/holder.min.js"></script>
-                <script>
-                    $(document).ready(function () {
-                        $('.dropdown-toggle').dropdown();
-                    });
-                </script>
-                <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-
-                <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-                <script src="../../assets/javascripts/ie10-viewport-bug-workaround.js"></script>
-
-
+    <script language="JavaScript" type="text/javascript">
+      $(document).ready(function(){
+        $('.carousel').carousel({
+          interval: 3000
+        })
+      });
+    </script>
   </head>
 
   <body>
