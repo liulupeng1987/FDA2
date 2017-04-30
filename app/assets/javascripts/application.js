@@ -14,7 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-//= require bootstrap
+//= require bootstrap/dropdown
+//= require bootstrap/alert
+//= require bootstrap-sprockets
 
 // 轮播图
 /*Bootstrap Carousel Touch Slider.
