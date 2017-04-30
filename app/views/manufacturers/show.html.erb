@@ -15,11 +15,19 @@
     <%= link_to("Edit", edit_manufacturer_path(@manufacturer), class: "btn btn-primary pull-right")%>
   </div>
   <h2><%= @manufacturer.name %></h2>
-  <p><i class="fa fa-eye" aria-hidden="true"></i><%= "#{@manufacturer.impressionist_count(:filter=>:session_hash)}" %>
+  <p>
+    <i class="fa fa-eye" aria-hidden="true"></i><%= "#{@manufacturer.impressionist_count(:filter=>:session_hash)}" %>
   </p>
   <p><%= simple_format(@manufacturer.description) %></p>
   <div>
     <h3>Contact Information</h3>
+    <div class="col-md-6">
+      <% if @manufacturer.cardimage.present? %>
+        <%= image_tag(@manufacturer.cardimage.medium.url, class: "thumbnail") %>
+      <% else %>
+        <%= image_tag("http://ww4.sinaimg.cn/large/006tNc79gy1ff4kscfbfxj30p00f0dil.jpg", class: "thumb") %>
+      <% end %>
+    </div>
     <table class= "table table-hover">
       <thead>
         <tr>

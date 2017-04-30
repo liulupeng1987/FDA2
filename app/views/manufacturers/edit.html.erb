@@ -12,9 +12,9 @@
         <%= f.input :email, input_html: {class: "form-control"} %>
         <%= f.input :website, input_html: {class: "form-control"} %>
 
-        <% if @product.image.present? %>
-          <span>目前商品图</span> <br>
-          <%= image_tag(@product.image.thumb.url) %>
+        <% if @manufacturer.cardimage.present? %>
+          <span>contact person</span> <br>
+          <%= image_tag(@manufacturer.cardimage.thumb.url) %>
         <% end %>
 
         <div class="group">
