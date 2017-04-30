@@ -105,6 +105,6 @@ class ManufacturersController < ApplicationController
   private
 
   def manufacturer_params
-    params.require(:manufacturer).permit(:name, :address, :description, :contact_person, :phone, :email, :website)
+    params.require(:manufacturer).permit(:name, :address, :description, :contact_person, :phone, :email, :website, :cardimage)
   end
 end

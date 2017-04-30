@@ -44,6 +44,10 @@ gem 'will_paginate-bootstrap'
 gem 'seo_helper'
 gem 'impressionist'
 gem 'font-awesome-rails'
+gem 'figaro'
+gem 'fog'
+gem 'carrierwave'
+gem 'mini_magick'
 
 
 group :development, :test do
