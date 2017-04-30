@@ -17,4 +17,4 @@ CarrierWave.configure do |config|
 #   else
 #     config.storage :file
 #   end
-# end
+end
