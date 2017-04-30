@@ -23,7 +23,7 @@
     <h3>Contact Information</h3>
     <div class="col-md-6">
       <% if @manufacturer.cardimage.present? %>
-        <%= image_tag(@manufacturer.cardimage.medium.url, class: "thumbnail") %>
+        <%= image_tag(@manufacturer.cardimage.medium.url, class: "medium") %>
       <% else %>
         <%= image_tag("http://ww4.sinaimg.cn/large/006tNc79gy1ff4kscfbfxj30p00f0dil.jpg", class: "thumb") %>
       <% end %>
