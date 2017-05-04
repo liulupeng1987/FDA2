@@ -46,6 +46,7 @@ gem 'impressionist'
 gem 'font-awesome-rails'
 gem 'figaro'
 gem 'fog'
+
 gem 'carrierwave'
 gem 'mini_magick'
 
