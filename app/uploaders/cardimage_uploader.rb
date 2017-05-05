@@ -9,7 +9,7 @@ class CardimageUploader < CarrierWave::Uploader::Base
   # storage :fog
     if Rails.env.production?
       storage :fog
-    elseif Rails.env.development?
+    elsif Rails.env.development?
       storage :file
     end
 
