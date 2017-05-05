@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
+  if Rails.env.development?
+   mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
+  devise_for :users, controllers: {
+    sessions: "users/sessions" ,
+    confirmations: "users/confirmations"
+  }
+  
   root 'welcome#index'
   get '/home', to: 'welcome#home'
   resources :medicines do

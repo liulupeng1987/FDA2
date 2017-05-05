@@ -49,6 +49,7 @@ gem 'fog'
 
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'letter_opener_web'
 
 
 group :development, :test do
